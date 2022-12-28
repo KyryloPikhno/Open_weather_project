@@ -1,10 +1,12 @@
+import {Route, Routes, Navigate} from "react-router-dom";
+import {MainLayoutPage} from "./layouts";
 
 
 function App() {
   return (
-    <div className="App">
-      app
-    </div>
+    <Routes path={'/'} element={<MainLayoutPage/>} >
+        <Route/>
+    </Routes>
   );
 }
 
