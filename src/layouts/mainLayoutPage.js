@@ -1,12 +1,13 @@
 import {Outlet} from "react-router-dom";
 
 import {Header} from "../components";
+import css from './mainLayout.module.css'
 
 
 const MainLayoutPage = () => {
 
     return (
-        <div>
+        <div className={css.container}>
             <div>
                 <Header/>
             </div>

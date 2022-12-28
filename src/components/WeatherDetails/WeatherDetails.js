@@ -40,15 +40,15 @@ const WeatherDetails = () => {
                         </div>
                     </div>
                     <div className={css.bottom}>
-                        <div className={css.feels}>
+                        <div>
                             {data.main && <p className='bold'>{data.main.feels_like.toFixed()}°F</p>}
                             <p>Feels Like</p>
                         </div>
-                        <div className={css.humidity}>
+                        <div>
                             {data.main && <p className='bold'>{data.main.humidity}%</p>}
                             <p>Humidity</p>
                         </div>
-                        <div className={css.wind}>
+                        <div>
                             {data.wind.speed && <p className='bold'>{data.wind.speed.toFixed()} MPH</p>}
                             <p>Wind Speed</p>
                         </div>

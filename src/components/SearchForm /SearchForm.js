@@ -15,23 +15,22 @@ const SearchForm = () => {
     })
 
     const submit = ({query}) => {
-        if(query){
-        setQuery({q: query})
-        }else{
+        if (query) {
+            setQuery({q: query})
+        } else {
             setQuery('')
         }
         reset()
     };
 
     return (
+        <div className={css.container}>
             <form onSubmit={handleSubmit(submit)} className={css.search}>
                 <input type="text"
                        placeholder={'Enter Location...'} {...register('query')}/>
-                {/*<button*/}
-                {/*    disabled={!isValid}>Search*/}
-                {/*</button>*/}
                 {errors.query && <span>{errors.query.message}</span>}
             </form>
+        </div>
     );
 };
 
