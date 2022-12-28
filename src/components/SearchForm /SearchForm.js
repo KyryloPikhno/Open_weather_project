@@ -3,6 +3,7 @@ import {joiResolver} from "@hookform/resolvers/joi";
 import {useForm} from "react-hook-form";
 
 import {cityNameValidator} from "../../validators";
+import css from './SearchForm.module.css';
 
 
 const SearchForm = () => {
@@ -19,20 +20,18 @@ const SearchForm = () => {
         }else{
             setQuery('')
         }
-        // reset()
+        reset()
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(submit)}>
+            <form onSubmit={handleSubmit(submit)} className={css.search}>
                 <input type="text"
-                       placeholder={'Enter movie...'} {...register('query')}/>
-                <button
-                    disabled={!isValid}>Search
-                </button>
+                       placeholder={'Enter Location...'} {...register('query')}/>
+                {/*<button*/}
+                {/*    disabled={!isValid}>Search*/}
+                {/*</button>*/}
                 {errors.query && <span>{errors.query.message}</span>}
             </form>
-        </div>
     );
 };
 
