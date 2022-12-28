@@ -1,2 +1,2 @@
-export * from './WeatherPage/WeatherPage';
+export * from './WeatherDetailsPage/WeatherDetailsPage';
 
