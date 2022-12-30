@@ -26,34 +26,39 @@ const WeatherDetails = () => {
     return (
         <div className="app">
             {
-                data &&
-                <div className={css.container}>
-                    <div className={css.top}>
-                        <div className={css.location}>
-                            <p>{data.name && data.name}</p>
+                data ?
+                    <div className={css.container}>
+                        <div className={css.top}>
+                            <div className={css.location}>
+                                <p>{data.name && data.name}</p>
+                            </div>
+                            <div className={css.temp}>
+                                {data.main && <h1>{data.main.temp.toFixed()}°F</h1>}
+                            </div>
+                            <div className={css.description}>
+                                {data.weather && <p>{data.weather[0].main}</p>}
+                            </div>
                         </div>
-                        <div className={css.temp}>
-                            {data.main && <h1>{data.main.temp.toFixed()}°F</h1>}
-                        </div>
-                        <div className={css.description}>
-                            {data.weather && <p>{data.weather[0].main}</p>}
+                        <div className={css.bottom}>
+                            <div>
+                                {data.main && <p className='bold'>{data.main.feels_like.toFixed()}°F</p>}
+                                <p>Feels Like</p>
+                            </div>
+                            <div>
+                                {data.main && <p className='bold'>{data.main.humidity}%</p>}
+                                <p>Humidity</p>
+                            </div>
+                            <div>
+                                {data.wind.speed && <p className='bold'>{data.wind.speed.toFixed()} MPH</p>}
+                                <p>Wind Speed</p>
+                            </div>
                         </div>
                     </div>
-                    <div className={css.bottom}>
-                        <div>
-                            {data.main && <p className='bold'>{data.main.feels_like.toFixed()}°F</p>}
-                            <p>Feels Like</p>
-                        </div>
-                        <div>
-                            {data.main && <p className='bold'>{data.main.humidity}%</p>}
-                            <p>Humidity</p>
-                        </div>
-                        <div>
-                            {data.wind.speed && <p className='bold'>{data.wind.speed.toFixed()} MPH</p>}
-                            <p>Wind Speed</p>
-                        </div>
+                    :
+                    <div className={css.welcome}>
+                        <h2>This is a weather app. Enter
+                            your location</h2>
                     </div>
-                </div>
             }
         </div>
     );

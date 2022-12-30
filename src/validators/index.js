@@ -1,1 +1,1 @@
-export * from './cityName.validator';
+export * from './query.validator';

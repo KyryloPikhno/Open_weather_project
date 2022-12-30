@@ -2,7 +2,7 @@ import {useSearchParams} from "react-router-dom";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {useForm} from "react-hook-form";
 
-import {cityNameValidator} from "../../validators";
+import {queryValidator} from "../../validators";
 import css from './SearchForm.module.css';
 
 
@@ -10,7 +10,7 @@ const SearchForm = () => {
     const [query, setQuery] = useSearchParams();
 
     const {handleSubmit, register, reset, formState: {errors, isValid}} = useForm({
-        resolver: joiResolver(cityNameValidator),
+        resolver: joiResolver(queryValidator),
         mode: 'all'
     })
 
@@ -28,7 +28,7 @@ const SearchForm = () => {
             <form onSubmit={handleSubmit(submit)} className={css.search}>
                 <input type="text"
                        placeholder={'Enter Location...'} {...register('query')}/>
-                {errors.query && <span>{errors.query.message}</span>}
+                {errors.query && <span className={css.error}>{errors.query.message}</span>}
             </form>
         </div>
     );

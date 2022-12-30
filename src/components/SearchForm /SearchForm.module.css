@@ -13,6 +13,10 @@
     flex-direction: column;
 }
 
+.error{
+    font-size: 12px;
+}
+
 input {
     padding: .7rem 1.5rem;
     font-size: 1.2rem;
