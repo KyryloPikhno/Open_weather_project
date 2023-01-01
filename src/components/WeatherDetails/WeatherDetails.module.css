@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: snow;
 }
 
 body {
@@ -20,58 +21,85 @@ h1 {
     font-size: 6rem;
 }
 
-.app {
-    width: 100%;
+.app{
+    width: 100vw;
     height: 100vh;
-    position: relative;
-    background-color: rgba(0,0,0,0.4);
-    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container {
-    max-width: 700px;
-    height: 700px;
-    margin: auto;
-    padding: 0 1rem;
-    position: relative;
-    top: 10%;
+.weather{
+    width: 35rem;
+    height: 28rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding: 2rem;
+    justify-content: space-around;
 }
 
-.top {
-    width: 100%;
-    margin: 1rem auto;
+.weather_location{
+    font-size: 2rem;
+    font-weight: 500;
 }
 
-.description {
-    position: relative;
-    right: -90%;
-    transform-origin: 0 0;
-    transform: rotate(269deg);
+.weather_degrees{
+    font-size: 2rem;
+    font-weight: 500;
 }
 
-.bottom {
+.weather_description{
     display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    width: 100%;
-    margin: 1rem auto;
-    padding: 1rem;
-    border-radius: 12px;
-    background-color: rgba(275,275,275, 0.2);
-}
-
-.welcome{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100vw;
-    margin-top: 50px;
-    font-size: 22px;
 }
 
-.bold {
-    font-weight: 700;
+.weather_description_head{
+    display: flex;
+    align-items: center;
 }
+
+.weather_icon{
+    font-size: 2rem;
+    margin-right: 0.4rem;
+}
+
+.weather_description * h3{
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-right: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.weather_date{
+    font-size: 1rem;
+    font-weight: normal;
+    color:snow;
+}
+
+.box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather_country{
+    height: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-left: 1rem;
+}
+
+.weather_display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1rem;
+    height: 17rem;
+}
+
+

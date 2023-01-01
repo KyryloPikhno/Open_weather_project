@@ -1,6 +1,7 @@
 import {useSearchParams} from "react-router-dom";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {useForm} from "react-hook-form";
+import { FiSearch } from 'react-icons/fi'
 
 import {queryValidator} from "../../validators";
 import css from './SearchForm.module.css';
@@ -25,13 +26,16 @@ const SearchForm = () => {
 
     return (
         <div className={css.container}>
-            <form onSubmit={handleSubmit(submit)} className={css.search}>
+            <form onSubmit={handleSubmit(submit)}>
                 <input type="text"
                        placeholder={'Enter Location...'} {...register('query')}/>
-                {errors.query && <span className={css.error}>{errors.query.message}</span>}
+                <span><FiSearch/></span>
             </form>
+                {errors.query && <span className={css.error}>{errors.query.message}</span>}
         </div>
+
     );
 };
+
 
 export {SearchForm};

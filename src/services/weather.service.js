@@ -7,7 +7,8 @@ const weatherService = {
         {
             params: {
                 q,
-                appid: apiKey
+                appid: apiKey.weather,
+                units: 'metric'
             }
         })
 };

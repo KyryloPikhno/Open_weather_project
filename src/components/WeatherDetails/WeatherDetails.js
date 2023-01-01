@@ -3,6 +3,7 @@ import {useSearchParams} from "react-router-dom";
 
 import {weatherService} from "../../services";
 import css from './WeatherDetails.module.css'
+import {Header} from "../Header/Header";
 
 
 const WeatherDetails = () => {
@@ -22,43 +23,43 @@ const WeatherDetails = () => {
         }
     }, [query]);
 
-
     return (
-        <div className="app">
+        <div className={css.app}>
             {
-                data ?
-                    <div className={css.container}>
-                        <div className={css.top}>
-                            <div className={css.location}>
-                                <p>{data.name && data.name}</p>
-                            </div>
-                            <div className={css.temp}>
-                                {data.main && <h1>{data.main.temp.toFixed()}°F</h1>}
-                            </div>
-                            <div className={css.description}>
-                                {data.weather && <p>{data.weather[0].main}</p>}
-                            </div>
+                data &&
+
+                <div className={css.weather}>
+                    <div>
+                        <Header/>
+                    </div>
+                    <div className={css.weather_display}>
+                        <h3 className={css.weather_location}>Weather in {data.name && data.name}</h3>
+
+                        <div>
+                            <h1 className={css.weather_degrees}>{data.main.temp.toFixed()} °C</h1>
                         </div>
-                        <div className={css.bottom}>
+
+                        <div className={css.weather_description}>
                             <div>
-                                {data.main && <p className='bold'>{data.main.feels_like.toFixed()}°F</p>}
-                                <p>Feels Like</p>
-                            </div>
-                            <div>
-                                {data.main && <p className='bold'>{data.main.humidity}%</p>}
-                                <p>Humidity</p>
-                            </div>
-                            <div>
-                                {data.wind.speed && <p className='bold'>{data.wind.speed.toFixed()} MPH</p>}
-                                <p>Wind Speed</p>
+                                <div className={css.weather_description_head}>
+                <span className={css.weather_icon}>
+                <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="weather icon"/>
+                </span>
+                                    <h3>{data.weather[0].description}</h3>
+                                </div>
+                                <div className={css.box}>
+                                    <div>
+                                        <h3>Humidity: {data.main.humidity}%</h3>
+                                        <h3>Wind speed: {data.wind.speed.toFixed()} m/s</h3>
+                                    </div>
+                                <div className={css.weather_country}>
+                                    <h3>{data.sys.country}</h3>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    :
-                    <div className={css.welcome}>
-                        <h2>This is a weather app. Enter
-                            your location</h2>
-                    </div>
+                </div>
             }
         </div>
     );
