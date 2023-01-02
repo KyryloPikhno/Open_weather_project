@@ -24,6 +24,7 @@ const SearchForm = () => {
         reset()
     };
 
+
     return (
         <div className={css.container}>
             <form onSubmit={handleSubmit(submit)}>

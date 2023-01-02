@@ -4,10 +4,11 @@ import {useSearchParams} from "react-router-dom";
 import {weatherService} from "../../services";
 import css from './WeatherDetails.module.css'
 import {Header} from "../Header/Header";
+import {Map} from "../Map/Map";
 
 
 const WeatherDetails = () => {
-    const [query] = useSearchParams();
+    const [query] = useSearchParams({q: 'Kyiv'});
 
     const [data, setData] = useState(null);
 
@@ -22,6 +23,8 @@ const WeatherDetails = () => {
             console.log(e)
         }
     }, [query]);
+
+    console.log(process.env.API_KEY);
 
     return (
         <div className={css.app}>
@@ -61,6 +64,9 @@ const WeatherDetails = () => {
                     </div>
                 </div>
             }
+            {/*<div>*/}
+            {/*    <Map/>*/}
+            {/*</div>*/}
         </div>
     );
 };

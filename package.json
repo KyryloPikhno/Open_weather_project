@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-google-maps/api": "^2.17.1",
     "@hookform/resolvers": "^2.9.10",
+    "@react-google-maps/api": "^2.17.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tomtom-international/web-sdk-maps": "^6.22.1",
     "axios": "^1.2.1",
     "joi": "^17.7.0",
     "react": "^18.2.0",
@@ -41,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-env": "^1.2.3"
   }
 }
