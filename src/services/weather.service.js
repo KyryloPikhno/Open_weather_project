@@ -1,5 +1,5 @@
 import {axiosService} from "./axsios.service";
-import {apiKey, url} from "../configs";
+import {url} from "../configs";
 
 
 const weatherService = {
@@ -7,7 +7,7 @@ const weatherService = {
         {
             params: {
                 q,
-                appid: apiKey.weather,
+                appid: process.env.API_KEY,
                 units: 'metric'
             }
         })
