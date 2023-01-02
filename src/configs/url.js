@@ -4,9 +4,5 @@ const url = {
     weather: '/weather'
 };
 
-const key = {
-    weather: process.env.API_KEY,
-    map: process.env.MAP_KEY
-};
 
-export {baseURL, url, key};
+export {baseURL, url};

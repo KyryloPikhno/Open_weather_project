@@ -14,7 +14,7 @@ const WeatherDetails = () => {
 
     useEffect(() => {
         try {
-            weatherService.getWeather(query.get('q'))
+            weatherService.getWeather(query.get('q'), process.env.REACT_APP_API_KEY)
                 .then((response) => {
                     setData(response.data)
                     console.log(response.data)
@@ -24,13 +24,11 @@ const WeatherDetails = () => {
         }
     }, [query]);
 
-    console.log(process.env.API_KEY);
 
     return (
         <div className={css.app}>
             {
                 data &&
-
                 <div className={css.weather}>
                     <div>
                         <Header/>
@@ -55,18 +53,18 @@ const WeatherDetails = () => {
                                         <h3>Humidity: {data.main.humidity}%</h3>
                                         <h3>Wind speed: {data.wind.speed.toFixed()} m/s</h3>
                                     </div>
-                                <div className={css.weather_country}>
-                                    <h3>{data.sys.country}</h3>
-                                </div>
+                                    <div className={css.weather_country}>
+                                        <h3>{data.sys.country}</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
-            {/*<div>*/}
-            {/*    <Map/>*/}
-            {/*</div>*/}
+            <div>
+                <Map/>
+            </div>
         </div>
     );
 };

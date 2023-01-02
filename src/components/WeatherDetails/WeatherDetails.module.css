@@ -24,9 +24,11 @@ h1 {
 .app{
     width: 100vw;
     height: 100vh;
+    gap: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .weather{
