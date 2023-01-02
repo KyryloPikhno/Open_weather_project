@@ -10,10 +10,12 @@ import css from './SearchForm.module.css';
 const SearchForm = () => {
     const [query, setQuery] = useSearchParams();
 
-    const {handleSubmit, register, reset, formState: {errors, isValid}} = useForm({
+    const {handleSubmit, register, reset, formState: {errors}} = useForm({
         resolver: joiResolver(queryValidator),
         mode: 'all'
     })
+
+    console.log(query.get('q'));
 
     const submit = ({query}) => {
         if (query) {
@@ -21,20 +23,18 @@ const SearchForm = () => {
         } else {
             setQuery('')
         }
-        reset()
+        reset();
     };
-
 
     return (
         <div className={css.container}>
             <form onSubmit={handleSubmit(submit)}>
                 <input type="text"
                        placeholder={'Enter Location...'} {...register('query')}/>
-                <span><FiSearch/></span>
+                <button><FiSearch/></button>
             </form>
-                {errors.query && <span className={css.error}>{errors.query.message}</span>}
+            {errors.query && <span className={css.error}>{errors.query.message}</span>}
         </div>
-
     );
 };
 

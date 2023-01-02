@@ -6,16 +6,12 @@ import {useSearchParams} from "react-router-dom";
 import css from './Map.module.css'
 
 
-const Map = () => {
+const Map = ({longitude, setLongitude, latitude, setLatitude}) => {
     const mapElement = useRef();
 
     const [query, setQuery] = useSearchParams();
 
     const [map, setMap] = useState({});
-
-    const [longitude, setLongitude] = useState(-0.112869)
-
-    const [latitude, setLatitude] = useState(51.504)
 
     useEffect(() => {
         console.log(longitude, latitude);
@@ -23,7 +19,7 @@ const Map = () => {
             key: process.env.REACT_APP_TOM_TOM_API_KEY,
             container: mapElement.current,
             center: [longitude, latitude],
-            zoom: 5,
+            zoom: 6,
         })
         setMap(map)
 
@@ -42,14 +38,14 @@ const Map = () => {
 
             setQuery({
                 q: '',
-                lat: e.lngLat.lat,
-                lon: e.lngLat.lng
+                lat: e.lngLat.lat.toString(),
+                lon: e.lngLat.lng.toString()
             });
         })
 
         return () => map.remove()
 
-    }, [longitude, latitude]);
+    }, [setQuery, query, longitude, setLongitude, latitude, setLatitude]);
 
     return (
         <div>

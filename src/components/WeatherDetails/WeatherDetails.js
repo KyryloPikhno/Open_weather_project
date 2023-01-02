@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 
 import {weatherService} from "../../services";
-import css from './WeatherDetails.module.css'
 import {Header} from "../Header/Header";
 import {Map} from "../Map/Map";
+import css from './WeatherDetails.module.css'
 
 
 const WeatherDetails = () => {
@@ -12,18 +12,28 @@ const WeatherDetails = () => {
 
     const [data, setData] = useState(null);
 
+    const [longitude, setLongitude] = useState(-0.112869)
+
+    const [latitude, setLatitude] = useState(51.504)
+
     useEffect(() => {
         try {
             if (query.get('lat') && query.get('lon') && query.get('q') === '') {
                 weatherService.getWeather('', query.get('lat'), query.get('lon'), process.env.REACT_APP_API_KEY)
                     .then((response) => {
                         setData(response.data)
+
                     });
             }
             if (!query.get('lat') && !query.get('lon') && query.get('q')) {
                 weatherService.getWeather(query.get('q'), '', '', process.env.REACT_APP_API_KEY)
                     .then((response) => {
                         setData(response.data)
+                        console.log(response.data.coord);
+
+                        setLongitude(response.data.coord.lon)
+                        setLatitude(response.data.coord.lat)
+
                     })
             }
         } catch (e) {
@@ -51,7 +61,7 @@ const WeatherDetails = () => {
                             <div>
                                 <div className={css.weather_description_head}>
                 <span className={css.weather_icon}>
-                <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="weather icon"/>
+                <img src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="weather icon"/>
                 </span>
                                     <h3>{data.weather[0].description}</h3>
                                 </div>
@@ -70,7 +80,7 @@ const WeatherDetails = () => {
                 </div>
             }
             <div>
-                <Map/>
+                <Map longitude={longitude} setLongitude={setLongitude} latitude={latitude} setLatitude={setLatitude}/>
             </div>
         </div>
     );
