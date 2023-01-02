@@ -9,7 +9,7 @@ import css from './Map.module.css'
 const Map = () => {
     const mapElement = useRef();
 
-    const [location, setLocation] = useSearchParams();
+    const [query, setQuery] = useSearchParams();
 
     const [map, setMap] = useState({});
 
@@ -22,10 +22,6 @@ const Map = () => {
         let map = tt.map({
             key: process.env.REACT_APP_TOM_TOM_API_KEY,
             container: mapElement.current,
-            // stylesVisibility: {
-            //     trafficIncidents: true,
-            //     trafficFlow: true,
-            // },
             center: [longitude, latitude],
             zoom: 5,
         })
@@ -44,15 +40,16 @@ const Map = () => {
             setLatitude(e.lngLat.lat)
             setLongitude(e.lngLat.lng)
 
-            setLocation({
-                lat:e.lngLat.lat,
-                lon:e.lngLat.lng
-            })
+            setQuery({
+                q: '',
+                lat: e.lngLat.lat,
+                lon: e.lngLat.lng
+            });
         })
 
         return () => map.remove()
 
-    }, [longitude, latitude])
+    }, [longitude, latitude]);
 
     return (
         <div>

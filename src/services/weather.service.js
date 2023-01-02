@@ -3,16 +3,16 @@ import {axiosService} from "./axsios.service";
 import {url} from "../configs";
 
 const weatherService = {
-    getWeather: (q, appid, lat, lon) => axiosService.get(url.weather,
+    getWeather: (q, lat, lon, appid) => axiosService.get(url.weather,
         {
             params: {
                 q,
-                appid,
-                units: 'metric',
                 lat,
-                lon
+                lon,
+                units: 'metric',
+                appid,
             }
-        }),
+        })
 };
 
 export {weatherService};

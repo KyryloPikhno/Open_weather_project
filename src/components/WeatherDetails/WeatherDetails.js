@@ -8,17 +8,24 @@ import {Map} from "../Map/Map";
 
 
 const WeatherDetails = () => {
-    const [query] = useSearchParams({q: 'Kyiv'});
+    const [query] = useSearchParams({q: 'Mariupol'});
 
     const [data, setData] = useState(null);
 
     useEffect(() => {
         try {
-            weatherService.getWeather(query.get('q'), process.env.REACT_APP_API_KEY)
-                .then((response) => {
-                    setData(response.data)
-                    console.log(response.data)
-                })
+            if (query.get('lat') && query.get('lon') && query.get('q') === '') {
+                weatherService.getWeather('', query.get('lat'), query.get('lon'), process.env.REACT_APP_API_KEY)
+                    .then((response) => {
+                        setData(response.data)
+                    });
+            }
+            if (!query.get('lat') && !query.get('lon') && query.get('q')) {
+                weatherService.getWeather(query.get('q'), '', '', process.env.REACT_APP_API_KEY)
+                    .then((response) => {
+                        setData(response.data)
+                    })
+            }
         } catch (e) {
             console.log(e)
         }
