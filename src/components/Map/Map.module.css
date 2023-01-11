@@ -13,3 +13,9 @@
     width: 100%;
 }
 
+@media screen and (max-width: 600px) {
+ .container{
+     width: 320px;
+     height: 320px;
+ }
+}

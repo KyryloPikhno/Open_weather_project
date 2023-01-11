@@ -22,7 +22,7 @@ h1 {
 }
 
 .app{
-    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
     gap: 20px;
     display: flex;
@@ -101,6 +101,65 @@ h1 {
     justify-content: space-around;
     margin-top: 1rem;
     height: 17rem;
+}
+
+@media screen and (max-width: 600px) {
+    .app{
+        gap: 10px;
+    }
+
+    .weather{
+        width: 320px;
+        height: 320px;
+    }
+
+    .weather_location{
+        font-size: 20px;
+    }
+
+    .weather_degrees{
+        font-size: 25px;
+    }
+
+    .weather_icon{
+        font-size: 15px;
+    }
+
+    .weather_description * h3{
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin-right: 1rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .weather_date{
+        font-size: 1rem;
+        font-weight: normal;
+        color:snow;
+    }
+
+    .box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .weather_country{
+        height: 100%;
+        width: 200px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .weather_display{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: 1rem;
+        height: 17rem;
+    }
 }
 
 

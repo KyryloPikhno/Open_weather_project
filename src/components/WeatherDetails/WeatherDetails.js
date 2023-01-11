@@ -79,9 +79,9 @@ const WeatherDetails = () => {
                     </div>
                 </div>
             }
-            <div>
+
                 <Map longitude={longitude} setLongitude={setLongitude} latitude={latitude} setLatitude={setLatitude}/>
-            </div>
+
         </div>
     );
 };
